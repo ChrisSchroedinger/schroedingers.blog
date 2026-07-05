@@ -6,7 +6,8 @@ const projects = [
     name: 'AgentWhisper',
     url: 'https://chrisschroedinger.github.io/AgentWhisper/',
     repo: 'https://github.com/ChrisSchroedinger/AgentWhisper',
-    status: 'v0.3 · active',
+    status: 'v0.3',
+    active: true,
     blurb:
       'Push-to-talk dictation for Linux. Hold a key, speak, release — transcribed entirely on your own machine, typed into whatever you were writing. No cloud, no account.',
   },
@@ -23,7 +24,7 @@ const projects = [
         <div class="row">
           {p.url ? <a href={p.url}><strong>{p.name}</strong></a> : <strong>{p.name}</strong>}
           {p.repo && <a class="mono small" href={p.repo}>source</a>}
-          <span class="status mono small">{p.status}</span>
+          <span class="status mono small">{p.status}{p.active && <> · <b class="live">active</b></>}</span>
         </div>
         <p>{p.blurb}</p>
       </div>

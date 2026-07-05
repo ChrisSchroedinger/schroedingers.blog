@@ -7,6 +7,7 @@
   --faint: #5d6580;
   --line: #232a40;
   --accent: #8b7bff;
+  --live: #4ade80;
   color-scheme: dark;
 }
 :root[data-theme="light"] {
@@ -16,6 +17,7 @@
   --faint: #9298ad;
   --line: #e5e7f0;
   --accent: #5b48d6;
+  --live: #16a34a;
   color-scheme: light;
 }
 
@@ -93,6 +95,7 @@ hr { border: 0; border-top: 1px solid var(--line); margin: 2.5rem 0; }
 
 .muted { color: var(--dim); }
 .small { font-size: 0.9rem; }
+.live { color: var(--live); font-weight: 600; }
 
 .about-pic {
   display: block; width: 100%; height: auto;
