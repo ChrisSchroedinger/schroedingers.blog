@@ -1,6 +1,7 @@
 ---
 import Base from '../../layouts/Base.astro';
 import { getCollection, render } from 'astro:content';
+import { url } from '../../lib/url';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog', ({ data }) => !data.draft);
@@ -21,5 +22,5 @@ const fmt = (d: Date) =>
   <article class="prose">
     <Content />
   </article>
-  <p style="margin-top: 3rem;"><a class="mono small" href="/blog">← all posts</a></p>
+  <p style="margin-top: 3rem;"><a class="mono small" href={url('/blog')}>← all posts</a></p>
 </Base>

@@ -8,7 +8,7 @@ export async function GET(context) {
   return rss({
     title: 'Chris Schroedinger',
     description: 'Occasional notes on building local-first tools with AI agents.',
-    site: context.site,
+    site: new URL(import.meta.env.BASE_URL, context.site).href,
     items: posts.map((post) => ({
       title: post.data.title,
       pubDate: post.data.date,

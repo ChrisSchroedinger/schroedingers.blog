@@ -1,9 +1,11 @@
-# chrisschroedinger.github.io
+# schroedingers.blog
 
 Personal site and blog. Minimal by design: no JavaScript, no webfonts,
 no tracking — one column of text with automatic light/dark theming.
 
-Live at **https://chrisschroedinger.github.io/**
+Live at **https://chrisschroedinger.github.io/schroedingers.blog/**
+(interim URL — moves to **https://schroedingers.blog** once the domain
+is registered; see the note in `astro.config.mjs`)
 
 ## Publishing a blog post
 
