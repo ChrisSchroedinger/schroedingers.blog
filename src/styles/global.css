@@ -1,6 +1,15 @@
-/* One column of text, two automatic themes, no JavaScript. */
+/* One column of text. Dark by default; the toggle opts into light. */
 
 :root {
+  --bg: #10131e;
+  --ink: #e6e8f2;
+  --dim: #9aa1b8;
+  --faint: #5d6580;
+  --line: #232a40;
+  --accent: #8b7bff;
+  color-scheme: dark;
+}
+:root[data-theme="light"] {
   --bg: #fbfbfd;
   --ink: #1c2030;
   --dim: #616880;
@@ -8,17 +17,6 @@
   --line: #e5e7f0;
   --accent: #5b48d6;
   color-scheme: light;
-}
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #10131e;
-    --ink: #e6e8f2;
-    --dim: #9aa1b8;
-    --faint: #5d6580;
-    --line: #232a40;
-    --accent: #8b7bff;
-    color-scheme: dark;
-  }
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -61,10 +59,21 @@ hr { border: 0; border-top: 1px solid var(--line); margin: 2.5rem 0; }
   gap: 1rem; flex-wrap: wrap;
   margin-bottom: clamp(2.5rem, 7vh, 4rem);
 }
-.site-head nav { display: flex; gap: 1.4rem; }
+.site-head nav { display: flex; align-items: center; gap: 1.4rem; }
 .site-head a { color: var(--dim); }
 .site-head a:hover, .site-head a[aria-current="page"] { color: var(--ink); text-decoration: none; }
 .wordmark { color: var(--ink) !important; font-weight: 600; }
+
+/* theme toggle */
+.theme-toggle {
+  background: none; border: none; padding: 0; cursor: pointer;
+  color: var(--dim); display: inline-flex; align-items: center;
+}
+.theme-toggle:hover { color: var(--ink); }
+.theme-toggle svg { width: 15px; height: 15px; }
+.theme-toggle .sun { display: none; }
+:root[data-theme="light"] .theme-toggle .sun { display: block; }
+:root[data-theme="light"] .theme-toggle .moon { display: none; }
 
 /* lists of posts / projects */
 .item-list { list-style: none; }

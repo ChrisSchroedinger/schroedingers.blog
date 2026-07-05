@@ -18,6 +18,13 @@ const { title, description = 'Chris Schroedinger — building local-first tools 
   <meta name="description" content={description} />
   <link rel="alternate" type="application/rss+xml" title="Chris Schroedinger" href={url('/rss.xml')} />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Ctext y='13' font-size='13'%3E%E2%96%B8%3C/text%3E%3C/svg%3E" />
+  <script is:inline>
+    /* runs before first paint: dark is default, light only if chosen */
+    try {
+      if (localStorage.getItem('blog-theme') === 'light')
+        document.documentElement.dataset.theme = 'light';
+    } catch (e) {}
+  </script>
 </head>
 <body>
   <div class="page">
@@ -27,6 +34,10 @@ const { title, description = 'Chris Schroedinger — building local-first tools 
         <a href={url('/')} aria-current={current === 'home' ? 'page' : undefined}>about</a>
         <a href={url('/blog')} aria-current={current === 'blog' ? 'page' : undefined}>writing</a>
         <a href="https://github.com/ChrisSchroedinger">github</a>
+        <button class="theme-toggle" id="theme-toggle" aria-label="Switch between dark and light theme">
+          <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.5A8.5 8.5 0 0 1 9.5 3.5a8.5 8.5 0 1 0 11 11z"/></svg>
+          <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2.5v2.5M12 19v2.5M4.3 4.3l1.8 1.8M17.9 17.9l1.8 1.8M2.5 12H5M19 12h2.5M4.3 19.7l1.8-1.8M17.9 6.1l1.8-1.8"/></svg>
+        </button>
       </nav>
     </header>
     <main>
@@ -37,5 +48,13 @@ const { title, description = 'Chris Schroedinger — building local-first tools 
       <span><a href={url('/rss.xml')}>rss</a> · <a href="https://github.com/ChrisSchroedinger/schroedingers.blog">site source</a></span>
     </footer>
   </div>
+  <script is:inline>
+    document.getElementById('theme-toggle').addEventListener('click', function () {
+      var next = document.documentElement.dataset.theme === 'light' ? 'dark' : 'light';
+      if (next === 'light') document.documentElement.dataset.theme = 'light';
+      else delete document.documentElement.dataset.theme;
+      try { localStorage.setItem('blog-theme', next); } catch (e) {}
+    });
+  </script>
 </body>
 </html>

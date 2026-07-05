@@ -1,7 +1,8 @@
 # schroedingers.blog
 
-Personal site and blog. Minimal by design: no JavaScript, no webfonts,
-no tracking — one column of text with automatic light/dark theming.
+Personal site and blog. Minimal by design: no webfonts, no tracking,
+and the only JavaScript is the theme toggle — one column of text,
+dark by default with an opt-in light mode.
 
 Live at **https://chrisschroedinger.github.io/schroedingers.blog/**
 (interim URL — moves to **https://schroedingers.blog** once the domain
