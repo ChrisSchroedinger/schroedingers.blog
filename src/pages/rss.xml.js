@@ -8,12 +8,12 @@ export async function GET(context) {
   return rss({
     title: 'Chris Schroedinger',
     description: 'Occasional notes on building local-first tools with AI agents.',
-    site: new URL(import.meta.env.BASE_URL, context.site).href,
+    site: new URL(import.meta.env.BASE_URL.replace(/\/?$/, '/'), context.site).href,
     items: posts.map((post) => ({
       title: post.data.title,
       pubDate: post.data.date,
       description: post.data.description,
-      link: `/blog/${post.id}/`,
+      link: `blog/${post.id}/`,
     })),
   });
 }
