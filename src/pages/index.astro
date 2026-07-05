@@ -1,7 +1,9 @@
 ---
 import Base from '../layouts/Base.astro';
 import { getCollection } from 'astro:content';
+import { Image } from 'astro:assets';
 import { url } from '../lib/url';
+import portrait from '../assets/schroedinger.webp';
 
 const posts = (await getCollection('blog', ({ data }) => !data.draft))
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
@@ -25,6 +27,14 @@ const fmt = (d: Date) =>
       that save time and energy, so the human can focus on whats important.
     </p>
   </div>
+
+  <Image
+    src={portrait}
+    alt="Illustration of Chris at his desk, a terminal on one monitor and an agent workflow on the other"
+    class="about-pic"
+    width={1344}
+    loading="eager"
+  />
 
   <h2 class="mono">writing</h2>
   {posts.length > 0 ? (

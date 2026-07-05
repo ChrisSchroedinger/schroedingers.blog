@@ -94,6 +94,13 @@ hr { border: 0; border-top: 1px solid var(--line); margin: 2.5rem 0; }
 .muted { color: var(--dim); }
 .small { font-size: 0.9rem; }
 
+.about-pic {
+  display: block; width: 100%; height: auto;
+  margin-top: 2.2rem;
+  border-radius: 10px;
+  border: 1px solid var(--line);
+}
+
 /* article body */
 .prose { margin-top: 0.4rem; }
 .prose > * + * { margin-top: 1em; }
