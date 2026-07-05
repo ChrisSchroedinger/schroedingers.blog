@@ -1,0 +1,26 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+const fmt = (d: Date) => d.toISOString().slice(0, 10);
+---
+<Base title="Writing — Chris Schroedinger" current="blog">
+  <h1>Writing</h1>
+  <p class="muted" style="margin-top: 0.5rem;">
+    Occasional notes on building tools with AI agents. Subscribe via <a href="/rss.xml">RSS</a>.
+  </p>
+  <ul class="item-list" style="margin-top: 2rem;">
+    {posts.map((post) => (
+      <li>
+        <span class="when mono">{fmt(post.data.date)}</span>
+        <span class="what">
+          <a href={`/blog/${post.id}/`}>{post.data.title}</a>
+          {post.data.description && <span class="note"> — {post.data.description}</span>}
+        </span>
+      </li>
+    ))}
+  </ul>
+</Base>

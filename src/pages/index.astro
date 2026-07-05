@@ -1,0 +1,84 @@
+---
+import Base from '../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0, 5);
+
+const fmt = (d: Date) =>
+  d.toISOString().slice(0, 7); // YYYY-MM
+
+const projects = [
+  {
+    name: 'AgentWhisper',
+    url: 'https://chrisschroedinger.github.io/AgentWhisper/',
+    repo: 'https://github.com/ChrisSchroedinger/AgentWhisper',
+    status: 'v0.3 · active',
+    blurb:
+      'Push-to-talk dictation for Linux. Hold a key, speak, release — transcribed entirely on your own machine, typed into whatever you were writing. No cloud, no account.',
+  },
+  {
+    name: 'GymTracker',
+    url: null,
+    repo: null,
+    status: 'in development · private for now',
+    blurb:
+      'A no-nonsense Android workout tracker (Jetpack Compose). Built for my own training first; released when it earns it.',
+  },
+  {
+    name: 'soupawhisper',
+    url: null,
+    repo: 'https://github.com/ChrisSchroedinger/soupawhisper',
+    status: 'archived',
+    blurb:
+      'AgentWhisper’s predecessor. Kept public because the dead ends are part of the story.',
+  },
+];
+---
+<Base title="Chris Schroedinger — local-first tools for the AI-augmented life" current="home">
+  <h1>I build local-first tools, with AI agents doing half the typing.</h1>
+
+  <div class="prose" style="margin-top: 1.2rem;">
+    <p class="muted">
+      I'm Chris. I make small, finished software for Linux and Android —
+      tools that run on your own machine, keep your data there, and do one
+      thing properly. I work agent-native: AI coding agents are my daily
+      collaborators, and every commit says so.
+    </p>
+    <p class="muted">
+      The long game is a full cockpit for the one-person, AI-augmented
+      life: voice in, agents working, everything local. AgentWhisper is
+      the first piece.
+    </p>
+  </div>
+
+  <h2 class="mono">projects</h2>
+  <div>
+    {projects.map((p) => (
+      <div class="project">
+        <div class="row">
+          {p.url ? <a href={p.url}><strong>{p.name}</strong></a> : <strong>{p.name}</strong>}
+          {p.repo && <a class="mono small" href={p.repo}>source</a>}
+          <span class="status mono small">{p.status}</span>
+        </div>
+        <p>{p.blurb}</p>
+      </div>
+    ))}
+  </div>
+
+  <h2 class="mono">writing</h2>
+  {posts.length > 0 ? (
+    <ul class="item-list">
+      {posts.map((post) => (
+        <li>
+          <span class="when mono">{fmt(post.data.date)}</span>
+          <span class="what"><a href={`/blog/${post.id}/`}>{post.data.title}</a></span>
+        </li>
+      ))}
+    </ul>
+  ) : (
+    <p class="muted">Nothing yet.</p>
+  )}
+  <p class="small" style="margin-top: 0.8rem;"><a class="mono" href="/blog">all posts →</a></p>
+</Base>
