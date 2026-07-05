@@ -1,0 +1,32 @@
+---
+import Base from '../layouts/Base.astro';
+
+const projects = [
+  {
+    name: 'AgentWhisper',
+    url: 'https://chrisschroedinger.github.io/AgentWhisper/',
+    repo: 'https://github.com/ChrisSchroedinger/AgentWhisper',
+    status: 'v0.3 · active',
+    blurb:
+      'Push-to-talk dictation for Linux. Hold a key, speak, release — transcribed entirely on your own machine, typed into whatever you were writing. No cloud, no account.',
+  },
+];
+---
+<Base title="Projects — Chris Schroedinger" current="projects">
+  <h1>Projects</h1>
+  <p class="muted" style="margin-top: 0.5rem;">
+    Small, finished tools — local-first, built in the open with AI agents.
+  </p>
+  <div style="margin-top: 1.6rem;">
+    {projects.map((p) => (
+      <div class="project">
+        <div class="row">
+          {p.url ? <a href={p.url}><strong>{p.name}</strong></a> : <strong>{p.name}</strong>}
+          {p.repo && <a class="mono small" href={p.repo}>source</a>}
+          <span class="status mono small">{p.status}</span>
+        </div>
+        <p>{p.blurb}</p>
+      </div>
+    ))}
+  </div>
+</Base>

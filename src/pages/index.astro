@@ -9,47 +9,26 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft))
 
 const fmt = (d: Date) =>
   d.toISOString().slice(0, 7); // YYYY-MM
-
-const projects = [
-  {
-    name: 'AgentWhisper',
-    url: 'https://chrisschroedinger.github.io/AgentWhisper/',
-    repo: 'https://github.com/ChrisSchroedinger/AgentWhisper',
-    status: 'v0.3 · active',
-    blurb:
-      'Push-to-talk dictation for Linux. Hold a key, speak, release — transcribed entirely on your own machine, typed into whatever you were writing. No cloud, no account.',
-  },
-];
 ---
-<Base title="Chris Schroedinger — local-first tools for the AI-augmented life" current="home">
-  <h1>I build local-first tools, with AI agents doing half the typing.</h1>
+<Base title="Chris Schroedinger — ex-poker pro turned AI agentic engineer" current="home">
+  <h1>Ex-professional poker player, turned AI agentic engineer.</h1>
 
   <div class="prose" style="margin-top: 1.2rem;">
     <p class="muted">
-      I'm Chris. I make small, finished software for Linux and Android —
-      tools that run on your own machine, keep your data there, and do one
-      thing properly. I work agent-native: AI coding agents are my daily
+      I'm Chris. For over a decade I made my living at the poker tables —
+      decisions under uncertainty, risk management, and staying level
+      while variance does its thing. Now I apply the same discipline to a
+      different game: engineering with AI agents. They're my daily
       collaborators, and every commit says so.
     </p>
     <p class="muted">
-      The long game is a full cockpit for the one-person, AI-augmented
-      life: voice in, agents working, everything local. AgentWhisper is
-      the first piece.
+      What's ahead: I'm building an agent-native cockpit for the
+      one-person, AI-augmented life — voice in
+      (<a href={url('/projects')}>AgentWhisper</a>), agents doing the
+      work, memory that persists, everything running local-first on my
+      own machines. I'm shipping it in public, piece by piece, on the way
+      to working as an agent engineer full-time.
     </p>
-  </div>
-
-  <h2 class="mono">projects</h2>
-  <div>
-    {projects.map((p) => (
-      <div class="project">
-        <div class="row">
-          {p.url ? <a href={p.url}><strong>{p.name}</strong></a> : <strong>{p.name}</strong>}
-          {p.repo && <a class="mono small" href={p.repo}>source</a>}
-          <span class="status mono small">{p.status}</span>
-        </div>
-        <p>{p.blurb}</p>
-      </div>
-    ))}
   </div>
 
   <h2 class="mono">writing</h2>
