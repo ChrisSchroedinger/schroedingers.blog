@@ -1,7 +1,7 @@
 /* One column of text. Dark by default; the toggle opts into light. */
 
 :root {
-  --bg: #1a1e2e;
+  --bg: #313543;
   --ink: #e6e8f2;
   --dim: #9aa1b8;
   --faint: #5d6580;
