@@ -1,7 +1,7 @@
 ---
-title: "Hello, World!"
+title: Hello, World!
 date: 2026-07-13
-description: "Welcome to my blog!"
+description: Welcome to my blog!
 ---
 
 I'm Chris Schroedinger.
